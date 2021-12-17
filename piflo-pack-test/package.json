@@ -1,8 +1,9 @@
 {
   "name": "piflo-pack-test",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "description": "",
   "main": "piflo-pack-test.js",
+  "type": "module",
   "scripts": {
     "test": "test"
   },
