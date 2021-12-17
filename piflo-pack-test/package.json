@@ -1,0 +1,19 @@
+{
+  "name": "piflo-pack-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "piflo-pack-test.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Florian-Piault/NodeJS_TP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Florian-Piault/NodeJS_TP/issues"
+  },
+  "homepage": "https://github.com/Florian-Piault/NodeJS_TP#readme"
+}
