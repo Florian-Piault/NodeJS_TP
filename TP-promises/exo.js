@@ -50,16 +50,58 @@ async function execute() {
 
 execute();
 
-async function useLukeSkywalker() {
+async function getVaderBD() {
   try {
-    const luke = await axios.get("https://swapi.dev/api/" + "people/1/");
-    lengthMoreThanTwenty(luke.data.name).then((data) => console.log(data));
-    moreThan(luke.data.mass, luke.data.height).then((data) =>
-      console.log(data)
+    const vader = await axios.get(
+      "https://swapi.py4e.com/api/people?search=Darth Vader"
     );
+    console.log(vader.data.results[0].birth_year);
   } catch (err) {
     console.error(err);
   }
 }
 
-useLukeSkywalker();
+async function getLukeInWookie() {
+  try {
+    const lukeInWookie = await axios.get(
+      "https://swapi.py4e.com/api/people/1?format=wookiee"
+    );
+    console.log(lukeInWookie.data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function getPlanetsNumber() {
+  try {
+    const planets = await axios.get("https://swapi.py4e.com/api/planets");
+    console.log(planets.data.count);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function getR2D2Residents() {
+  try {
+    const r2 = await axios.get(
+      "https://swapi.py4e.com/api/people/?search=r2-d2"
+    );
+    const r2Homeworld = await axios.get(r2.data.results[0].homeworld);
+    const res = [];
+
+    // r2Homeworld.data.residents.forEach((url) => {
+    //   const resisdent = await axios.get(url);
+    //   resisdent.then((data) => res.push(data));
+    // });
+
+    console.log(r2Homeworld.data.residents);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+getVaderBD();
+getStartships();
+getLukeInWookie();
+getPlanetsNumber();
+getR2D2Residents();
