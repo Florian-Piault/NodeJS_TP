@@ -1,11 +1,7 @@
 const express = require("express");
+const sequelize = require("sequelize");
 const app = express();
+const Router = require("./routes.js")(app);
 const PORT = 3000;
-const { User } = require("./sequelize");
-
-app.get("/", async (req, res) => {
-  const jane = await User.create({});
-  res.json(jane);
-});
 
 app.listen(PORT, () => console.log("http://localhost:" + PORT));
