@@ -1,40 +1,40 @@
-const { User } = require("../models");
+const { Comment } = require("../models");
 
 exports.index = async (req, res) => {
-  const users = User.findAll();
-  users
+  const comments = Comment.findAll();
+  comments
     .then((data) => send(data))
     .catch((error) => res.status(400).send({ message: "Bad request", error }));
 };
 
 exports.create = async (req, res) => {
-  const user = User.create(req.body);
-  user
-    .then((data) => res.send({ message: "User created", data }))
+  const comment = Comment.create(req.body);
+  comment
+    .then((data) => res.send({ message: "comment created", data }))
     .catch((error) => res.status(400).send({ message: "Bad request", error }));
 };
 
 exports.read = async (req, res) => {
-  const user = User.findOne({ id: req.params.id });
-  user
+  const comment = Comment.findOne({ id: req.params.id });
+  comment
     .then((data) => send(data))
     .catch((error) => res.status(400).send({ message: "Bad request", error }));
 };
 
 exports.patch = async (req, res) => {
-  const user = User.update(req.body, {
+  const comment = Comment.update(req.body, {
     where: {
       id: req.params.id,
     },
   });
-  user
-    .then((data) => send({ message: "User updated", data }))
+  comment
+    .then((data) => send({ message: "comment updated", data }))
     .catch((error) => res.status(400).send({ message: "Bad request", error }));
 };
 
 exports.delete = async (req, res) => {
-  const user = User.destroy({ id: req.params.id });
-  user
-    .then((data) => send({ message: "User deleted" }))
+  const comment = Comment.destroy({ id: req.params.id });
+  comment
+    .then((data) => send({ message: "comment deleted" }))
     .catch((error) => res.status(400).send({ message: "Bad request", error }));
 };

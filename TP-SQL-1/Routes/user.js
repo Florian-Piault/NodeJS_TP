@@ -1,6 +1,5 @@
 const express = require("express");
-const Router = express.Router();
-const userController = require("./Controller/user");
+const userController = require("../Controller/user");
 
 module.exports = (app) => {
   app.get("/", async (req, res) => {
