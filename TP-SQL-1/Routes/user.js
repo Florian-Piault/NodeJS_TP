@@ -3,7 +3,7 @@ const userController = require("../Controller/user");
 
 module.exports = (app) => {
   app.get("/", async (req, res) => {
-    res.send("hELLO");
+    res.send("hello");
   });
 
   app.get("/users", userController.index);

@@ -3,7 +3,7 @@ const { Comment } = require("../models");
 exports.index = async (req, res) => {
   const comments = Comment.findAll();
   comments
-    .then((data) => send(data))
+    .then((data) => res.send(data))
     .catch((error) => res.status(400).send({ message: "Bad request", error }));
 };
 
@@ -17,7 +17,7 @@ exports.create = async (req, res) => {
 exports.read = async (req, res) => {
   const comment = Comment.findOne({ id: req.params.id });
   comment
-    .then((data) => send(data))
+    .then((data) => res.send(data))
     .catch((error) => res.status(400).send({ message: "Bad request", error }));
 };
 

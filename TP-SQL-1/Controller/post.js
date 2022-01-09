@@ -3,7 +3,7 @@ const { Post } = require("../models");
 exports.index = async (req, res) => {
   const posts = Post.findAll();
   posts
-    .then((data) => send(data))
+    .then((data) => res.send(data))
     .catch((error) => res.status(400).send({ message: "Bad request", error }));
 };
 
@@ -15,9 +15,13 @@ exports.create = async (req, res) => {
 };
 
 exports.read = async (req, res) => {
+  const displayComs = req.query.comments ?? false;
   const post = Post.findOne({ id: req.params.id });
   post
-    .then((data) => send(data))
+    .then((data) => {
+      if (displayComs) res.send({ message: "Comments are displayed", data });
+      else res.send(data);
+    })
     .catch((error) => res.status(400).send({ message: "Bad request", error }));
 };
 
@@ -28,13 +32,13 @@ exports.patch = async (req, res) => {
     },
   });
   post
-    .then((data) => send({ message: "Post updated", data }))
+    .then((data) => res.send({ message: "Post updated", data }))
     .catch((error) => res.status(400).send({ message: "Bad request", error }));
 };
 
 exports.delete = async (req, res) => {
   const post = Post.destroy({ id: req.params.id });
   post
-    .then(() => send({ message: "Post deleted" }))
+    .then(() => res.send({ message: "Post deleted" }))
     .catch((error) => res.status(400).send({ message: "Bad request", error }));
 };
